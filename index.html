@@ -5,54 +5,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistemas Lineares</title>
+    <title>Sistemas Lineares - Eliminação de Gauss</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/ico.png" type="image/x-icon">
 </head>
 
 <body>
-    <h1>Sistemas Lineares</h1>
+    <div class="container">
+        <h1 class="title">Sistemas Lineares - Eliminação de Gauss</h1>
 
-    <section class="body">
-        <section class="inputs">
-            <div class="row ">
-                <input type="number " class="inputRow " id="11 ">
-            </div>
-            <div class="row ">
-                <input type="number " class="inputRow " id="12 ">
-            </div>
-            <div class="row ">
-                <input type="number " class="inputRow " id="13 ">
-            </div>
-            <br>
-            <div class="row ">
-                <input type="number " class="inputRow " id="21 ">
-            </div>
-            <div class="row ">
-                <input type="number " class="inputRow " id="21 ">
-            </div>
-            <div class="row ">
-                <input type="number " class="inputRow " id="21 ">
-            </div>
-            <br>
-            <div class="row ">
-                <input type="number " class="inputRow " id="31 ">
-            </div>
-            <div class="row ">
-                <input type="number " class="inputRow " id="31 ">
-            </div>
-            <div class="row ">
-                <input type="number " class="inputRow " id="31 ">
-            </div>
+        <section class="body">
+            <section class="inputs">
+                <div class="row ">
+                    <input type="number" class="inputRow" id="l1c1">
+                </div>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l1c2">
+                </div>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l1c3">
+                </div>
+                <br>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l2c1">
+                </div>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l2c2">
+                </div>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l2c3">
+                </div>
+                <br>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l3c1">
+                </div>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l3c2">
+                </div>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l3c3">
+                </div>
+            </section>
+
+            <section class="condition">
+                <div class="row">
+                    <input type="number" class="inputRow" id="l4c1">
+                </div>
+                <br>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l4c2">
+                </div>
+                <br>
+                <div class="row">
+                    <input type="number" class="inputRow" id="l4c3">
+                </div>
+            </section>
         </section>
 
-        <section class="result">
-            <hr>
+        <button id="resultButton">Calcular</button>
 
-            <div>[ ]</div>
-            <div>[ ]</div>
-            <div>[ ]</div>
-        </section>
-    </section>
+        <div id="result"></div>
+    </div>
+
+    <footer>
+        <p>By:
+            <a href="https://github.com/dudulacerdadl" target="_blank" rel="noopener noreferrer"> Eduardo Lacerda</a> e
+            <a href="https://github.com/VazMF" target="_blank" rel="noopener noreferrer"> Maria Fernanda</a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

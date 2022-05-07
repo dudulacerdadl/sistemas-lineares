@@ -1,5 +1,26 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+}
+
 body {
+    margin-top: 5px;
+    min-height: 100%;
+    background-image: url(images/bg.jpg);
+    background-attachment: fixed;
+    background-size: cover;
     text-align: center;
+}
+
+.container {
+    min-height: 100%;
+    /* igual a altura do rodapé */
+    margin-bottom: -60px;
+}
+
+.container:after {
+    content: "";
+    display: block;
 }
 
 .row {
@@ -8,17 +29,73 @@ body {
 }
 
 .inputRow {
+    color: white;
+    background-color: rgb(0, 0, 0, 0.5);
     display: block;
     width: 50px;
     height: 50px;
-    border: 1px solid;
+    border: none;
 }
 
 .body {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.title {
+    color: black;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+}
+
+.inputs {
+    border-width: 0px 3px 0px 0px;
+    border-color: black;
+    border-style: dotted;
 }
 
 .inputs,
-.result {
+.condition {
     display: block;
+}
+
+#resultButton {
+    padding: 10px;
+    font-size: 15pt;
+    color: white;
+    background-color: rgb(197, 0, 197);
+    border-radius: 10px;
+    border-style: none;
+    margin-bottom: 10px;
+}
+
+#resultButton:hover {
+    background-color: purple;
+}
+
+.resultTable td {
+    padding: 10px;
+    color: white;
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+footer {
+    padding-top: 5px;
+    position: absolute;
+    height: 1.5rem;
+    width: 100%;
+    bottom: 0;
+    color: white;
+    background-color: black;
+}
+
+footer a {
+    color: aquamarine;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: blue;
+    text-decoration: none;
 }
