@@ -74,9 +74,10 @@ body {
     background-color: purple;
 }
 
-.resultTable td {
+.resultReturn {
     padding: 10px;
     color: white;
+    text-shadow: -.5px 0 black, 0 .5px black, .5px 0 black, 0 -.5px black;
     background-color: rgb(0, 0, 0, 0.5);
 }
 
