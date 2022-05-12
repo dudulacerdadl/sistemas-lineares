@@ -44,6 +44,25 @@ body {
     padding: 30px;
 }
 
+.ordem {
+    padding-top: 30px;
+}
+
+.inputOrdem {
+    font-size: 20px;
+    color: white;
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+.inputOrdem::placeholder {
+    padding-left: 5px;
+    color: bisque;
+}
+
 .title {
     color: black;
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
@@ -70,8 +89,22 @@ body {
     margin-bottom: 10px;
 }
 
+#generateButton {
+    padding: 10px;
+    font-size: 15pt;
+    color: white;
+    background-color: rgb(91, 91, 255);
+    border-radius: 10px;
+    border-style: none;
+    margin-bottom: 10px;
+}
+
 #resultButton:hover {
     background-color: purple;
+}
+
+#generateButton:hover {
+    background-color: blue;
 }
 
 .resultReturn {

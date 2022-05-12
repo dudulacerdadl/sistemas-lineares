@@ -14,55 +14,21 @@
     <div class="container">
         <h1 class="title">Sistemas Lineares - Eliminação de Gauss</h1>
 
-        <section class="body">
-            <section class="inputs">
-                <div class="row ">
-                    <input type="number" class="inputRow" id="l1c1">
-                </div>
-                <div class="row">
-                    <input type="number" class="inputRow" id="l1c2">
-                </div>
-                <div class="row">
-                    <input type="number" class="inputRow" id="l1c3">
-                </div>
-                <br>
-                <div class="row">
-                    <input type="number" class="inputRow" id="l2c1">
-                </div>
-                <div class="row">
-                    <input type="number" class="inputRow" id="l2c2">
-                </div>
-                <div class="row">
-                    <input type="number" class="inputRow" id="l2c3">
-                </div>
-                <br>
-                <div class="row">
-                    <input type="number" class="inputRow" id="l3c1">
-                </div>
-                <div class="row">
-                    <input type="number" class="inputRow" id="l3c2">
-                </div>
-                <div class="row">
-                    <input type="number" class="inputRow" id="l3c3">
-                </div>
+        <div class="ordem">
+            <input placeholder="Número da ordem..." type="number" class="inputOrdem">
+
+            <button id="generateButton">Gerar</button>
+        </div>
+
+        <section class="hidden" style="display: none;">
+            <section class="body">
+                <section class="inputs"></section>
+                <section class="condition"></section>
             </section>
 
-            <section class="condition">
-                <div class="row">
-                    <input type="number" class="inputRow" id="r1">
-                </div>
-                <br>
-                <div class="row">
-                    <input type="number" class="inputRow" id="r2">
-                </div>
-                <br>
-                <div class="row">
-                    <input type="number" class="inputRow" id="r3">
-                </div>
-            </section>
+            <button id="resultButton">Calcular</button>
         </section>
 
-        <button id="resultButton">Calcular</button>
 
         <div id="result"></div>
     </div>
