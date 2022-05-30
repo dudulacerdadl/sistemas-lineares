@@ -133,3 +133,8 @@ footer a:hover {
     color: blue;
     text-decoration: none;
 }
+
+.titleMatriz {
+    color: black;
+    text-shadow: -.5px 0 white, 0 .5px white, .5px 0 white, 0 -.5px white;
+}

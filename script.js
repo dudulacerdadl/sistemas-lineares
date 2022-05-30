@@ -4,6 +4,8 @@
     var button = document.querySelector('#resultButton');
     var resultDiv = document.querySelector('#result');
     var identityDiv = document.querySelector('#identity');
+    var matrizLDiv = document.querySelector('#matrizL');
+    var matrizUDiv = document.querySelector('#matrizU');
     var inputs = document.querySelector('.inputs');
     var condition = document.querySelector('.condition');
     var values = [];
@@ -126,30 +128,34 @@
                 var a = 0;
 
                 for (var k = 0; k < j; k++) {
-                    if (valor[o][0] == 0) {
-                        for (var k = 1; k < j; k++) {
-                            a++;
-                            if (valor[o][k] != 0) {
-                                break;
-                            }
-                        }
-                        if (a == o) {
-                            var troca = valor[l];
-                            valor[l] = valor[o];
-                            valor[o] = troca;
-                            variante = ident[l];
-                            ident[l] = ident[o];
-                            ident[o] = variante;
-                            o++;
+                    if (valor[o][k] == 0) {
 
-                            break;
-                        }
                     } else {
                         for (var k = 0; k < j + 1; k++) {
-                            val = (valor[o][k]) - (m * valor[l][k]);
-                            valor[o][k] = val.toFixed(3);
+                            val = (valor[o][k]) - (m * valor[l][k]); //0
+                            valor[o][k] = val.toFixed(5);
                         }
                     }
+                }
+            }
+
+            for (var o = l + 1; o < i + 1; o++) {
+                for (var k = 0; k < j; k++) {
+                    if (valor[o][k] != 0) {
+                        break;
+                    } else {
+                        a++;
+                    }
+                }
+                if (a > o) {
+                    var troca = valor[a];
+                    valor[a] = valor[o];
+                    valor[o] = troca;
+                    variante = ident[a];
+                    ident[a] = ident[o];
+                    ident[o] = variante;
+                    l++
+                    break;
                 }
             }
         }
@@ -169,14 +175,16 @@
             }
         }
 
-        console.log(identidadeOrden);
-
         gerateArrayIdentity(ordem);
 
         return `<p class="resultReturn">[${x}]</p>`
     }
 
     function gerateArrayIdentity(ordem) {
+        var title = document.createElement("div");
+        title.setAttribute("class", "titleMatriz");
+        identityDiv.appendChild(title);
+        title.innerHTML = "<p>Matriz Permutação</p>";
         for (let i = 0; i < ordem; i++) {
             for (let j = 0; j < ordem; j++) {
                 var newDivIdent = document.createElement("div");
@@ -197,7 +205,6 @@
     function setIdent(item, index) {
         item.forEach(function(elemento, indice) {
             let dir = document.querySelector(`#lin${index}col${indice}`);
-            console.log(elemento);
             dir.setAttribute("value", elemento);
         });
     }
