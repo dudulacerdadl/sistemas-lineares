@@ -2,6 +2,7 @@
     var ordemValue = null;
     var generateButton = document.querySelector('#generateButton');
     var button = document.querySelector('#resultButton');
+    var matrizButton = document.querySelector('#resultButtonMatriz');
     var resultDiv = document.querySelector('#result');
     var identityDiv = document.querySelector('#identity');
     var matrizLDiv = document.querySelector('#matrizL');
@@ -13,6 +14,11 @@
     var results = [];
     var identidade = [];
     var identidadeOrden = [];
+    var x = [];
+    var arrPivo = [];
+    var matrizL = [];
+    var matrizU = [];
+    var valor;
     var variante;
     var pivo;
     var result;
@@ -35,6 +41,7 @@
                 newInput.setAttribute("type", "number");
                 newInput.setAttribute("class", "inputRow");
                 newInput.setAttribute("id", `l${i}c${j}`);
+                newInput.setAttribute("required", "");
                 inputs.appendChild(newDiv);
                 newDiv.appendChild(newInput);
                 if (i == j) {
@@ -55,6 +62,7 @@
             newInput.setAttribute("type", "number");
             newInput.setAttribute("class", "inputRow");
             newInput.setAttribute("id", `r${k}`);
+            newInput.setAttribute("required", "");
             condition.appendChild(newDiv);
             newDiv.appendChild(newInput);
             condition.appendChild(br);
@@ -65,8 +73,14 @@
         }
     }
 
+    matrizButton.addEventListener("click", function() {
+        button.removeAttribute("disabled");
+        button.removeAttribute("style");
+        returnResult(ordemValue);
+    });
+
     button.addEventListener("click", function() {
-        resultDiv.innerHTML = returnResult(ordemValue);
+        resultDiv.innerHTML = `<p class="resultReturn">[${setX(ordemValue)}]</p>`;
     });
 
     function getValues(item) {
@@ -96,16 +110,18 @@
 
         arrayValues.forEach(setResultsInArray);
 
-        return execute(arrayValues, ordem, identidadeOrden);
+        matrizU = execute(arrayValues, ordem, identidadeOrden);
+        gerateArrayIdentity(ordem);
+        gerateArrayL(ordem);
+        gerateArrayU(ordem);
     }
 
     function execute(array, ordem, identidadeArray) {
-        let valor = array;
+        valor = array;
 
         var i = parseInt(ordem);
         j = i;
         i = i - 1;
-        var x = [];
         var ident = identidadeArray;
 
         for (l = 0; l < i + 1; l++) {
@@ -126,6 +142,7 @@
             for (var o = l + 1; o < i + 1; o++) {
                 var m = valor[o][l] / pivo;
                 var a = 0;
+                arrPivo.push(m);
 
                 for (var k = 0; k < j; k++) {
                     if (valor[o][k] == 0) {
@@ -160,24 +177,32 @@
             }
         }
 
-        for (y = i; y > -1; y--) {
+        const retorno = valor;
+
+        return retorno;
+    }
+
+    function setX(ordem) {
+        let i = parseInt(ordem);
+        let j = i;
+        i = i - 1;
+
+        for (let y = i; y > -1; y--) {
             result = valor[y][j];
 
-            for (m = 0; m < j; m++) {
+            for (let m = 0; m < j; m++) {
                 if (m == y) {} else {
                     result = result - valor[y][m];
                 }
             }
 
             x[y] = result / valor[y][y];
-            for (l = i; l > -1; l--) {
+            for (let l = i; l > -1; l--) {
                 valor[l][y] = x[y] * valor[l][y];
             }
         }
 
-        gerateArrayIdentity(ordem);
-
-        return `<p class="resultReturn">[${x}]</p>`
+        return x;
     }
 
     function gerateArrayIdentity(ordem) {
@@ -202,10 +227,84 @@
         identidadeOrden.forEach(setIdent);
     }
 
+    function gerateArrayL(ordem) {
+        var title = document.createElement("div");
+        title.setAttribute("class", "titleMatriz");
+        matrizLDiv.appendChild(title);
+        title.innerHTML = "<p>Matriz L</p>";
+        for (let i = 0; i < ordem; i++) {
+            for (let j = 0; j < ordem; j++) {
+                var newDivIdent = document.createElement("div");
+                var newInputIdent = document.createElement("input");
+                newDivIdent.setAttribute("class", "row");
+                newInputIdent.setAttribute("class", "inputRow");
+                newInputIdent.setAttribute("disabled", "disabled");
+                newInputIdent.setAttribute("id", `linha${i}coluna${j}`);
+                matrizLDiv.appendChild(newDivIdent);
+                newDivIdent.appendChild(newInputIdent);
+            }
+            let br = document.createElement("br");
+            matrizLDiv.appendChild(br);
+        }
+        matrizL = identidadeOrden;
+        matrizL.forEach(setMatrizL);
+        matrizL.forEach(setL);
+    }
+
+    function gerateArrayU(ordem) {
+        var title = document.createElement("div");
+        title.setAttribute("class", "titleMatriz");
+        matrizUDiv.appendChild(title);
+        title.innerHTML = "<p>Matriz U</p>";
+        for (let i = 0; i < ordem; i++) {
+            for (let j = 0; j < ordem; j++) {
+                var newDivIdent = document.createElement("div");
+                var newInputIdent = document.createElement("input");
+                newDivIdent.setAttribute("class", "row");
+                newInputIdent.setAttribute("class", "inputRow");
+                newInputIdent.setAttribute("disabled", "disabled");
+                newInputIdent.setAttribute("id", `linhau${i}colunau${j}`);
+                matrizUDiv.appendChild(newDivIdent);
+                newDivIdent.appendChild(newInputIdent);
+            }
+            let br = document.createElement("br");
+            matrizUDiv.appendChild(br);
+        }
+        matrizU.forEach(setU);
+    }
+
     function setIdent(item, index) {
         item.forEach(function(elemento, indice) {
             let dir = document.querySelector(`#lin${index}col${indice}`);
             dir.setAttribute("value", elemento);
         });
+    }
+
+    function setL(item, index) {
+        item.forEach(function(elemento, indice) {
+            let dir = document.querySelector(`#linha${index}coluna${indice}`);
+            dir.setAttribute("value", elemento);
+        });
+    }
+
+    function setU(item, index) {
+        item.forEach(function(elemento, indice) {
+            if (indice < item.length - 1) {
+                let dir = document.querySelector(`#linhau${index}colunau${indice}`);
+                dir.setAttribute("value", elemento);
+            }
+        });
+    }
+
+    function setMatrizL(item, index) {
+        item.forEach(function(elemento, indice) {
+            if (indice < index) {
+                if (arrPivo[index + indice - 1] === undefined) {
+                    matrizL[index][indice] = 0;
+                } else {
+                    matrizL[index][indice] = arrPivo[index + indice - 1];
+                }
+            }
+        })
     }
 })();

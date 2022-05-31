@@ -79,7 +79,8 @@ body {
     display: block;
 }
 
-#resultButton {
+#resultButton,
+#resultButtonMatriz {
     padding: 10px;
     font-size: 15pt;
     color: white;
@@ -99,7 +100,8 @@ body {
     margin-bottom: 10px;
 }
 
-#resultButton:hover {
+#resultButton:hover,
+#resultButtonMatriz:hover {
     background-color: purple;
 }
 
