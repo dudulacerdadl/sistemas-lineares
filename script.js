@@ -248,6 +248,7 @@
         }
         matrizL = identidadeOrden;
         matrizL.forEach(setMatrizL);
+        matrizL.forEach(orderMatrizL);
         matrizL.forEach(setL);
     }
 
@@ -300,9 +301,22 @@
         item.forEach(function(elemento, indice) {
             if (indice < index) {
                 if (arrPivo[index + indice - 1] === undefined) {
-                    matrizL[index][indice] = 0;
+                    matrizL[index][indice] = 1;
                 } else {
                     matrizL[index][indice] = arrPivo[index + indice - 1];
+                }
+            }
+        })
+    }
+
+    function orderMatrizL(item, index) {
+        item.forEach(function(elemento, indice) {
+            if (index == indice) {
+                if (matrizL[index][indice] != 1) {
+                    let temp = matrizL[index + 1];
+                    matrizL[index + 1] = matrizL[index];
+                    matrizL[index] = temp;
+                    matrizL.forEach(orderMatrizL);
                 }
             }
         })
